@@ -1,8 +1,10 @@
 const { Sequelize, DataTypes } = require("sequelize")
 const UserModel = require("../models/user")
+const CartModel = require("../models/cart")
+const ProductModel = require("../models/product")
 const bcrypt = require("bcrypt")
 
-const sequelize = new Sequelize('Template', 'root', '', {
+const sequelize = new Sequelize('HUMAN_database_development', 'root', '', {
   host: 'localhost',
   dialect: 'mariadb',
   dialectOptions: {
@@ -11,7 +13,9 @@ const sequelize = new Sequelize('Template', 'root', '', {
   logging: false
 })
 
-const User = UserModel(sequelize, DataTypes)
+const User = UserModel(sequelize, DataTypes);
+const Cart = CartModel(sequelize, DataTypes);
+const Product = ProductModel(sequelize, DataTypes);
 
 const initDb = () => {
   return sequelize.sync({force: true}).then(_ => { //force: true pour drop la BDD et la recréer à chaque démarrage
@@ -19,7 +23,7 @@ const initDb = () => {
     bcrypt.hash('admin', 10)
     .then(hash => {
       User.create({
-          username: 'admin',
+          firstName: 'admin',
           password: hash
         })
       })

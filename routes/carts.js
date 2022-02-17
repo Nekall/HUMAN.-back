@@ -56,7 +56,7 @@ module.exports = (app) => {
       where: { id: id }
     })
     .then(_ => {
-      return Cart.findByPk(id).then(cart => { //on return pour transmettre l'erreur eventuelle au prochain bloc catch
+      return Cart.findByPk(id).then(cart => {
         if(cart === null){
           const message = "The requested cart does not exist. Try again with another ID.";
           return res.status(404).json({ message })

@@ -14,8 +14,15 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Cart.init({
-    userId: DataTypes.INTEGER,
-    caddy: DataTypes.TEXT
+    userId: {
+      type: DataTypes.INTEGER
+    },
+    caddy: {
+      type: DataTypes.TEXT,
+      validate: {
+        notEmpty: { msg: "Cart cannot be empty."}
+      }
+    },
   }, {
     sequelize,
     modelName: 'Cart',

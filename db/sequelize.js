@@ -23,13 +23,13 @@ const initDb = () => {
     bcrypt.hash('admin', 10)
     .then(hash => {
       User.create({
-          firstName: 'admin',
+          email: 'admin@admin.admin',
           password: hash
         })
       })
-    .then(_ => console.log("Compte Admin créé. Username: admin; Password: admin."))
+    .then(_ => console.log("Admin account created. Username: admin@admin; Password: admin."))
 
-    console.log(`La base de donnée nommée ${sequelize.config.database}, a bien été initialisée !`)
+    console.log(`The database named ${sequelize.config.database}, has been initialized !`)
   })
 }
 

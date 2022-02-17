@@ -15,29 +15,18 @@ app
   .use(cors())
 
 sequelize.initDb()
-//Routes Init
+
 require("./routes/initial")(app)
-
-//Routes User
-//require("./routes/user/login")(app)
-//require("./routes/user/register")(app)
-//require("./routes/user/all")(app)
 require("./routes/users")(app)
+require("./routes/products")(app)
+require("./routes/carts")(app)
 
-//Routes Product
-//require("./routes/product/create")(app)
-//require("./routes/product/modify")(app)
-//require("./routes/product/delete")(app)
-
-//Routes Cart
-//require("./routes/cart/create")(app)
-//require("./routes/cart/modify")(app)
-//require("./routes/cart/delete")(app)
-
+//test section
+require("./test/test__user")(app)
 
 app.use(({res}) =>{
-  const message = "Impossible de trouver la ressource demandée ! Veuillez essayer une autre URL."
+  const message = "Could not find the requested resource! Please try another URL."
   res.status(404).json({message})
 })
 
-app.listen(port, () => console.log(`App démarrée sur: localhost:${port}`))
+app.listen(port, () => console.log(`App started on: localhost:${port}`))

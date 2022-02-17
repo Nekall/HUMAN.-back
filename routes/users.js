@@ -30,9 +30,9 @@ app.post("/user/register", (req, res) => {
   })
 })
 
+//LOGIN
 app.post("/login", (req, res) => {
-
-  User.findOne({ where: { username: req.body.username } }).then(user => {
+  User.findOne({ where: { email: req.body.email } }).then(user => {
 
     if(!user){
       const message = "This user does not exist.";

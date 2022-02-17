@@ -26,7 +26,7 @@ module.exports = {
       description: {
         type: Sequelize.TEXT
       },
-      color: {
+      colors: {
         type: Sequelize.TEXT
       },
       care: {

@@ -14,15 +14,72 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Product.init({
-    name: DataTypes.STRING,
-    price: DataTypes.INTEGER,
-    sizes: DataTypes.TEXT,
-    reference: DataTypes.INTEGER,
-    quantity: DataTypes.INTEGER,
-    description: DataTypes.TEXT,
-    color: DataTypes.TEXT,
-    care: DataTypes.STRING,
-    composition: DataTypes.STRING
+    name: {
+      type: DataTypes.STRING,
+      validate: {
+        len: {
+          args: [5, 80],
+          msg: "Product's name must be between 5 and 80 characters long."
+        },
+        notEmpty: { msg: "Name of a product cannot be empty."}
+      }
+    },
+    price: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: { msg: "Price of a product cannot be empty."}
+      }
+    },
+    sizes: {
+      type: DataTypes.TEXT,
+      validate: {
+        notEmpty: { msg: "Sizes of a product cannot be empty."}
+      }
+    },
+    reference: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: { msg: "Reference of a product cannot be empty."}
+      }
+    },
+    quantity: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: { msg: "Quantity of a product cannot be empty."}
+      }
+    },
+    description: {
+      type: DataTypes.TEXT,
+      validate: {
+        len: {
+          args: [15, 500],
+          msg: "Product's description must be between 15 and 500 characters long."
+        },
+        notEmpty: { msg: "Description of a product cannot be empty."}
+      }
+    },
+    colors: {
+      type: DataTypes.TEXT,
+      validate: {
+        notEmpty: { msg: "Colors of a product cannot be empty."}
+      }
+    },
+    care: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: { msg: "Price of a product cannot be empty."}
+      }
+    },
+    composition: {
+      type: DataTypes.STRING,
+      validate: {
+        len: {
+          args: [5, 250],
+          msg: "Composition must be between 5 and 250 characters long."
+        },
+        notEmpty: { msg: "Name of a product cannot be empty."}
+      }
+    }
   }, {
     sequelize,
     modelName: 'Product',

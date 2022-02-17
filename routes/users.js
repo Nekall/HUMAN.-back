@@ -17,7 +17,16 @@ app.post("/user/register", (req, res) => {
   .then(hash => {
     User.create({
         email: req.body.email,
-        password: hash
+        password: hash,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        streetAddress: req.body.streetAddress,
+        zipCode: req.body.zipCode,
+        state: req.body.state,
+        city: req.body.city,
+        country: req.body.country,
+        phone: req.body.phone,
+        tickets: null,
       })
     })
   .then(_ => {

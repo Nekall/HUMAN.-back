@@ -38,6 +38,9 @@ module.exports = {
       phone: {
         type: Sequelize.STRING
       },
+      tickets: {
+        type: Sequelize.TEXT
+      },
       isAdmin: {
         type: Sequelize.BOOLEAN
       },

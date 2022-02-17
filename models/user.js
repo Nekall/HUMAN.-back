@@ -40,6 +40,9 @@ module.exports = (sequelize, DataTypes) => {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: {
+        msg: "This email address has already been used in our database."
+      },
       validate: {
         isEmail: {msg: "Enter a valid email address."},
         notEmpty: { msg: "User's email must be filled in."}
@@ -101,9 +104,12 @@ module.exports = (sequelize, DataTypes) => {
     type: DataTypes.STRING,
     allowNull: true,
     validate: {
-        is: ["^[0-9]*$"],
-        msg: "Telephone number must be composed of digits."
+        is: ["^[0-9]*$"]
       },
+    },
+    tickets: {
+      type: DataTypes.TEXT,
+      allowNull: true,
     },
     isAdmin: {
       type: DataTypes.BOOLEAN,

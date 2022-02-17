@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     price: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       validate: {
         notEmpty: { msg: "Price of a product cannot be empty."}
       }
@@ -38,6 +38,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     reference: {
       type: DataTypes.INTEGER,
+      unique: {
+        msg: "This reference already exists."
+      },
       validate: {
         notEmpty: { msg: "Reference of a product cannot be empty."}
       }

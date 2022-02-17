@@ -24,7 +24,17 @@ const initDb = () => {
     .then(hash => {
       User.create({
           email: 'admin@admin.admin',
-          password: hash
+          password: hash,
+          firstName: "Admin",
+          lastName: "Admin",
+          streetAddress: "Admin",
+          zipCode: "666666",
+          state: "Admin",
+          city: "Admin",
+          country: "Admin",
+          phone: "060000000",
+          tickets: null,
+          isAdmin: true,
         })
       })
     .then(_ => console.log("Admin account created. Username: admin@admin; Password: admin."))

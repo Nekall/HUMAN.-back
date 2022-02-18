@@ -9,6 +9,7 @@ module.exports = (app) => {
     Product.create({
         slug: slug,
         name: req.body.name,
+        price: req.body.price,
         sizes: req.body.sizes,
         reference: req.body.reference,
         quantity: req.body.quantity,

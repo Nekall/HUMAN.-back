@@ -73,6 +73,10 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: { msg: "Price of a product cannot be empty."}
       }
     },
+    slug: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     composition: {
       type: DataTypes.STRING,
       validate: {

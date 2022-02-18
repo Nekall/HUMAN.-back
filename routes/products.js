@@ -5,7 +5,18 @@ module.exports = (app) => {
   //CREATE
   app.post("/product", (req, res) => {
     //Check if Admin
-    Product.create(req.body)
+    let slug = (req.body.name).toLowerCase().replace(/ /ig, "-");
+    Product.create({
+        slug: slug,
+        name: req.body.name,
+        sizes: req.body.sizes,
+        reference: req.body.reference,
+        quantity: req.body.quantity,
+        description: req.body.description,
+        colors: req.body.colors,
+        care: req.body.care,
+        composition: req.body.composition
+      })
     .then(product => {
       const message = "Product has been created.";
       return res.status(201).json({ message, data: product })

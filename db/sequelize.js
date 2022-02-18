@@ -44,5 +44,5 @@ const initDb = () => {
 }
 
 module.exports = {
-  initDb, User
+  initDb, User, Product, Cart
 }

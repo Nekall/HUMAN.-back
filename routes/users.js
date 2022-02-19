@@ -6,7 +6,7 @@ const { ValidationError, UniqueConstraintError } = require("sequelize");
 
 module.exports = (app) => {
 //CREATE
-app.post("/user/register", (req, res) => {
+app.post("/register", (req, res) => {
   if(req.body.password != req.body.passwordConfirm){
     const message = "Passwords are not the same.";
     return res.status(400).json({ message })
@@ -34,7 +34,7 @@ app.post("/user/register", (req, res) => {
   })
   .catch(error => {
     const message = "User has NOT been created. Please try again.";
-    return res.json({ message, data: error })
+    return res.status(401).json({ message, data: error })
   })
 })
 
@@ -60,12 +60,12 @@ app.post("/login", (req, res) => {
       )
 
       const message = "User has been successfully logged in";
-      return res.json({ message, data: user, token })
+      return res.status(200).json({ message, data: user, token })
     })
   })
   .catch(error => {
     const message = "User has NOT been logged in. Please try again.";
-    return res.json({ message, data: error })
+    return res.status(401).json({ message, data: error })
   })
 })
 
@@ -121,7 +121,7 @@ app.post("/login", (req, res) => {
           return res.status(404).json({ message })
         }
         const message = `User ${user.email} has been modified.`;
-        res.json({message, data: user })
+        res.status(200).json({message, data: user })
       })
     })
     .catch(error => {

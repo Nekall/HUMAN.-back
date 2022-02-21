@@ -62,7 +62,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     colors: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       validate: {
         notEmpty: { msg: "Colors of a product cannot be empty."}
       }

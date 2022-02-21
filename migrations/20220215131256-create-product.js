@@ -27,7 +27,7 @@ module.exports = {
         type: Sequelize.TEXT
       },
       colors: {
-        type: Sequelize.TEXT
+        type: Sequelize.STRING
       },
       care: {
         type: Sequelize.STRING

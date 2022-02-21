@@ -18,8 +18,8 @@ const Cart = CartModel(sequelize, DataTypes);
 const Product = ProductModel(sequelize, DataTypes);
 
 const initDb = () => {
-  return sequelize.sync({force: true}).then(_ => { //force: true pour drop la BDD et la recréer à chaque démarrage
-
+  return sequelize.sync({force: false}).then(_ => { //force: true pour drop la BDD et la recréer à chaque démarrage
+/*
     bcrypt.hash('admin', 10)
     .then(hash => {
       User.create({
@@ -38,7 +38,7 @@ const initDb = () => {
         })
       })
     .then(_ => console.log("Admin account created. Username: admin@admin; Password: admin."))
-
+*/
     console.log(`The database named ${sequelize.config.database}, has been initialized !`)
   })
 }

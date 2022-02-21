@@ -93,7 +93,6 @@ app.post("/login", (req, res) => {
       attributes: {exclude: ['password']},
     })
     .then(user => {
-      console.log(user.get());
       if(user === null){
         const message = `User with the id ${req.params.id} does not exist. Try again with another id.`;
         return res.status(404).json({ message })

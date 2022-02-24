@@ -3,6 +3,7 @@ const stripe = require("stripe")(process.env.STRIPE_KEY);
 
 app.post("/stripe/charge", async (req, res) => {
   let { amount, id } = req.body;
+  console.log(amount);
   try{
     const payment = await stripe.paymentIntents.create({
       amount: amount,

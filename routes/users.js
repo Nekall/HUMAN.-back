@@ -27,10 +27,11 @@ app.post("/register", (req, res) => {
         phone: req.body.phone,
         tickets: null,
       })
+
     })
   .then(_ => {
     const message = `User ${req.body.email} has been created.`;
-    res.status(201).json({ message, email: req.body.email})
+    return res.status(201).json({ message, email: req.body.email})
   })
   .catch(error => {
     const message = "User has NOT been created. Please try again.";

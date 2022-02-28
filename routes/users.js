@@ -1,8 +1,8 @@
 const { User } = require("../db/sequelize");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const privateKey = require("../auth/private_key");
 const { ValidationError, UniqueConstraintError } = require("sequelize");
+const privateKey = process.env.PRIVATE_KEY;
 
 module.exports = (app) => {
 //CREATE

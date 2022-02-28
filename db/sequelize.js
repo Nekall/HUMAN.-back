@@ -5,7 +5,7 @@ const ProductModel = require("../models/product")
 const bcrypt = require("bcrypt")
 
 const sequelize = new Sequelize('HUMAN_database_development', 'root', '', {
-  host: 'localhost',
+  host: process.env.DATABASE_URL,
   dialect: 'mariadb',
   dialectOptions: {
     timezone: 'Etc/GMT-2',

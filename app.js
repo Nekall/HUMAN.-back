@@ -6,7 +6,7 @@ const sequelize = require("./db/sequelize");
 const cors = require("cors");
 
 const app = express()
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 app
   .use(favicon(__dirname + "/favicon.ico"))
@@ -29,4 +29,4 @@ app.use(({res}) =>{
   res.status(404).json({message})
 })
 
-app.listen(port, () => console.log(`App started on: localhost:${port}`))
+app.listen(PORT, () => console.log(`App started on: localhost:${PORT}`))

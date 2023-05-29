@@ -1,10 +1,10 @@
 {
   "name": "human.",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Gender-neutral clothing boutique",
   "scripts": {
-    "develop": "strapi develop",
+    "dev": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi"
@@ -17,7 +17,9 @@
     "better-sqlite3": "8.0.1"
   },
   "author": {
-    "name": "Neka"
+    "name" : "Neka",
+    "email" : "contact@neka.dev",
+    "url" : "https://neka.dev/"
   },
   "strapi": {
     "uuid": "19cf4cd3-6bd8-4875-83bc-ba40f42f4bba"

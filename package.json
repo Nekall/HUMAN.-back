@@ -1,0 +1,15 @@
+{
+  "name": "human.",
+  "version": "1.0.0",
+  "description": "genderless shop",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "Neka",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.22"
+  }
+}

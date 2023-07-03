@@ -29,7 +29,7 @@ export const getUser = async (req, res) => {
   }
 };
 
-export const getAllUsers = async (req, res) => {
+export const getAllUsers = async (_, res) => {
   try {
     const users = await User.find();
     res.status(200).json({

@@ -22,7 +22,7 @@ export const createProduct = async (req, res) => {
   }
 };
 
-export const getAllProducts = async (req, res) => {
+export const getAllProducts = async (_, res) => {
   try {
     const products = await Product.find();
     res.status(200).json({

@@ -24,7 +24,7 @@ export const createEmployee = async (req, res) => {
   }
 };
 
-export const getAllEmployees = async (req, res) => {
+export const getAllEmployees = async (_, res) => {
   try {
     const employees = await Employee.find();
     res.status(200).json({

@@ -8,6 +8,7 @@ const app = express();
 
 // Database
 import database from './database.js';
+database();
 
 // Routes
 import userRoutes from './routes/userRoutes.js';

@@ -2,11 +2,11 @@ import Employee from "../models/Employee.js";
 
 export const createEmployee = async (req, res) => {
   try {
-    const { firstName, lastName, email, phone, position, department } = req.body;
+    const { firstname, lastname, email, phone, position, department } = req.body;
 
     const employee = new Employee({
-      firstName,
-      lastName,
+      firstname,
+      lastname,
       email,
       phone,
       position,
@@ -57,11 +57,11 @@ export const getEmployeeById = async (req, res) => {
 export const updateEmployee = async (req, res) => {
   try {
     const { id } = req.params;
-    const { firstName, lastName, email, phone, position, department } = req.body;
+    const { firstname, lastname, email, phone, position, department } = req.body;
 
     const employee = await Employee.findByIdAndUpdate(
       id,
-      { firstName, lastName, email, phone, position, department },
+      { firstname, lastname, email, phone, position, department },
       { new: true }
     );
 

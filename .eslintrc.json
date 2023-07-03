@@ -1,0 +1,28 @@
+{
+    "env": {
+        "node": true,
+        "es2021": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "rules": {
+        "no-mixed-spaces-and-tabs": "error",
+        "no-undef": "error",
+        "no-unused-vars": "error",
+        "quotes": [
+            "error",
+            "double"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "indent": [
+            "error",
+            2
+        ]
+    }
+}

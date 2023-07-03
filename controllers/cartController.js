@@ -32,13 +32,11 @@ export const createCartItem = async (req, res) => {
       });
     }
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "Error creating cart item",
-        error: error.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "Error creating cart item",
+      error: error.message,
+    });
   }
 };
 
@@ -73,13 +71,11 @@ export const updateCartItemQuantity = async (req, res) => {
       data: cart,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "Error updating cart item quantity",
-        error: error.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "Error updating cart item quantity",
+      error: error.message,
+    });
   }
 };
 
@@ -114,13 +110,11 @@ export const deleteCartItem = async (req, res) => {
       data: cart,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "Error deleting cart item",
-        error: error.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "Error deleting cart item",
+      error: error.message,
+    });
   }
 };
 
@@ -142,12 +136,10 @@ export const getCartByUser = async (req, res) => {
       data: cart,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "Error getting cart",
-        error: error.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "Error getting cart",
+      error: error.message,
+    });
   }
 };

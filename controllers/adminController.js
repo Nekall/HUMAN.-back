@@ -17,13 +17,11 @@ export const createAdmin = async (req, res) => {
       data: savedAdmin,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "Error creating admin",
-        error: error.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "Error creating admin",
+      error: error.message,
+    });
   }
 };
 
@@ -36,13 +34,11 @@ export const getAllAdmins = async (_, res) => {
       data: admins,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "Error getting admins",
-        error: error.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "Error getting admins",
+      error: error.message,
+    });
   }
 };
 
@@ -61,13 +57,11 @@ export const getAdminById = async (req, res) => {
       data: admin,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "Error getting admin",
-        error: error.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "Error getting admin",
+      error: error.message,
+    });
   }
 };
 
@@ -93,13 +87,11 @@ export const updateAdmin = async (req, res) => {
       data: admin,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "Error updating admin",
-        error: error.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "Error updating admin",
+      error: error.message,
+    });
   }
 };
 
@@ -116,12 +108,10 @@ export const deleteAdmin = async (req, res) => {
       .status(200)
       .json({ success: true, message: "Admin deleted successfully" });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "Error deleting admin",
-        error: error.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "Error deleting admin",
+      error: error.message,
+    });
   }
 };

@@ -19,13 +19,11 @@ export const createTicket = async (req, res) => {
       data: savedTicket,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "Error creating ticket",
-        error: error.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "Error creating ticket",
+      error: error.message,
+    });
   }
 };
 
@@ -40,13 +38,11 @@ export const getAllTickets = async (_, res) => {
       data: tickets,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "Error getting tickets",
-        error: error.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "Error getting tickets",
+      error: error.message,
+    });
   }
 };
 
@@ -67,13 +63,11 @@ export const getTicketById = async (req, res) => {
       data: ticket,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "Error getting ticket",
-        error: error.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "Error getting ticket",
+      error: error.message,
+    });
   }
 };
 
@@ -101,13 +95,11 @@ export const updateTicket = async (req, res) => {
       data: ticket,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "Error updating ticket",
-        error: error.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "Error updating ticket",
+      error: error.message,
+    });
   }
 };
 
@@ -124,12 +116,10 @@ export const deleteTicket = async (req, res) => {
       .status(200)
       .json({ success: true, message: "Ticket deleted successfully" });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "Error deleting ticket",
-        error: error.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "Error deleting ticket",
+      error: error.message,
+    });
   }
 };

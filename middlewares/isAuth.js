@@ -11,7 +11,11 @@ const isAuth = (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    if (decoded.role !== "User" && decoded.role !== "Employee" && decoded.role !== "Admin")
+    if (
+      decoded.role !== "User" &&
+      decoded.role !== "Employee" &&
+      decoded.role !== "Admin"
+    )
       return res.status(401).send({
         success: false,
         message: "Not authorized.",

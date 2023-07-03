@@ -7,17 +7,17 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 
 // Database
-import database from './database.js';
+import database from "./database.js";
 database();
 
 // Routes
-import userRoutes from './routes/userRoutes.js';
+import userRoutes from "./routes/userRoutes.js";
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use('/users', userRoutes);
+app.use("/users", userRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");

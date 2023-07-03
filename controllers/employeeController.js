@@ -2,7 +2,8 @@ import Employee from "../models/Employee.js";
 
 export const createEmployee = async (req, res) => {
   try {
-    const { firstname, lastname, email, phone, position, department } = req.body;
+    const { firstname, lastname, email, phone, position, department } =
+      req.body;
 
     const employee = new Employee({
       firstname,
@@ -20,7 +21,13 @@ export const createEmployee = async (req, res) => {
       data: savedEmployee,
     });
   } catch (error) {
-    res.status(500).json({ success: false, message: "Error creating employee", error: error.message });
+    res
+      .status(500)
+      .json({
+        success: false,
+        message: "Error creating employee",
+        error: error.message,
+      });
   }
 };
 
@@ -33,7 +40,13 @@ export const getAllEmployees = async (_, res) => {
       data: employees,
     });
   } catch (error) {
-    res.status(500).json({ success: false, message: "Error getting employees", error: error.message });
+    res
+      .status(500)
+      .json({
+        success: false,
+        message: "Error getting employees",
+        error: error.message,
+      });
   }
 };
 
@@ -42,7 +55,9 @@ export const getEmployeeById = async (req, res) => {
     const { id } = req.params;
     const employee = await Employee.findById(id);
     if (!employee) {
-      return res.status(404).json({ success: false, message: "Employee not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "Employee not found" });
     }
     res.status(200).json({
       success: true,
@@ -50,14 +65,21 @@ export const getEmployeeById = async (req, res) => {
       data: employee,
     });
   } catch (error) {
-    res.status(500).json({ success: false, message: "Error getting employee", error: error.message });
+    res
+      .status(500)
+      .json({
+        success: false,
+        message: "Error getting employee",
+        error: error.message,
+      });
   }
 };
 
 export const updateEmployee = async (req, res) => {
   try {
     const { id } = req.params;
-    const { firstname, lastname, email, phone, position, department } = req.body;
+    const { firstname, lastname, email, phone, position, department } =
+      req.body;
 
     const employee = await Employee.findByIdAndUpdate(
       id,
@@ -66,7 +88,9 @@ export const updateEmployee = async (req, res) => {
     );
 
     if (!employee) {
-      return res.status(404).json({ success: false, message: "Employee not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "Employee not found" });
     }
     res.status(200).json({
       success: true,
@@ -74,7 +98,13 @@ export const updateEmployee = async (req, res) => {
       data: employee,
     });
   } catch (error) {
-    res.status(500).json({ success: false, message: "Error updating employee", error: error.message });
+    res
+      .status(500)
+      .json({
+        success: false,
+        message: "Error updating employee",
+        error: error.message,
+      });
   }
 };
 
@@ -83,10 +113,20 @@ export const deleteEmployee = async (req, res) => {
     const { id } = req.params;
     const employee = await Employee.findByIdAndDelete(id);
     if (!employee) {
-      return res.status(404).json({ success: false, message: "Employee not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "Employee not found" });
     }
-    res.status(200).json({ success: true, message: "Employee deleted successfully" });
+    res
+      .status(200)
+      .json({ success: true, message: "Employee deleted successfully" });
   } catch (error) {
-    res.status(500).json({ success: false, message: "Error deleting employee", error: error.message });
+    res
+      .status(500)
+      .json({
+        success: false,
+        message: "Error deleting employee",
+        error: error.message,
+      });
   }
 };

@@ -16,18 +16,26 @@ export const createWishlist = async (req, res) => {
       data: savedWishlist,
     });
   } catch (error) {
-    res.status(500).json({ success: false, message: "Error creating wishlist", error: error.message });
+    res
+      .status(500)
+      .json({
+        success: false,
+        message: "Error creating wishlist",
+        error: error.message,
+      });
   }
 };
 
 export const getWishlistByUser = async (req, res) => {
   try {
     const { userId } = req.params;
-    const wishlist = await Wishlist.findOne({ user: userId }).populate("user products");
+    const wishlist = await Wishlist.findOne({ user: userId }).populate(
+      "user products"
+    );
     if (!wishlist) {
       return res.status(404).json({
         success: false,
-        message: "Wishlist not found"
+        message: "Wishlist not found",
       });
     }
     res.status(200).json({
@@ -36,7 +44,13 @@ export const getWishlistByUser = async (req, res) => {
       data: wishlist,
     });
   } catch (error) {
-    res.status(500).json({ success: false, message: "Error getting wishlist", error: error.message });
+    res
+      .status(500)
+      .json({
+        success: false,
+        message: "Error getting wishlist",
+        error: error.message,
+      });
   }
 };
 
@@ -52,7 +66,9 @@ export const updateWishlist = async (req, res) => {
     ).populate("user products");
 
     if (!wishlist) {
-      return res.status(404).json({ success: false, message: "Wishlist not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "Wishlist not found" });
     }
     res.status(200).json({
       success: true,
@@ -60,7 +76,13 @@ export const updateWishlist = async (req, res) => {
       data: wishlist,
     });
   } catch (error) {
-    res.status(500).json({ success: false, message: "Error updating wishlist", error: error.message });
+    res
+      .status(500)
+      .json({
+        success: false,
+        message: "Error updating wishlist",
+        error: error.message,
+      });
   }
 };
 
@@ -69,10 +91,20 @@ export const deleteWishlist = async (req, res) => {
     const { userId } = req.params;
     const wishlist = await Wishlist.findOneAndDelete({ user: userId });
     if (!wishlist) {
-      return res.status(404).json({ success: false, message: "Wishlist not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "Wishlist not found" });
     }
-    res.status(200).json({ success: true, message: "Wishlist deleted successfully" });
+    res
+      .status(200)
+      .json({ success: true, message: "Wishlist deleted successfully" });
   } catch (error) {
-    res.status(500).json({ success: false, message: "Error deleting wishlist", error: error.message });
+    res
+      .status(500)
+      .json({
+        success: false,
+        message: "Error deleting wishlist",
+        error: error.message,
+      });
   }
 };

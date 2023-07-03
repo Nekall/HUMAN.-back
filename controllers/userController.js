@@ -4,6 +4,9 @@ import bcrypt from "bcrypt";
 // Model
 import User from "../models/userModel.js";
 
+// helpers
+import { sendMail } from "../helpers/sendMail.js";
+
 export const createUser = async (req, res) => {
   const { password } = req.body;
 
@@ -132,5 +135,95 @@ export const login = async (req, res) => {
     });
   } catch (error) {
     res.status(500).json({ success: false, message: "Failed to login" });
+  }
+};
+
+export const forgotPassword = async (req, res) => {
+  const user = await User.findById(req.params.userId);
+
+  if (user) {
+    const token = jwt.sign(
+      {
+        userId: user._id,
+        role: user.role,
+        email: user.email,
+        firstname: user.firstname,
+        lastname: user.lastname,
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: "10m" }
+    );
+
+    const response = await sendMail(
+      user.email,
+      "HUMAN. | Password Reset Request",
+      `Click on this link to reset your password: <br/>
+      <a href="${process.env.FRONT_LINK}/password-reset/${token}">RESET</a><br/>
+      This link is valid for 10 minutes.<br/>
+      If you did not make this request, please ignore this email.<br/>
+      <br/>
+      <br/>"
+     ${process.env.FRONT_LINK}/password-reset/${token}
+     `
+    );
+
+    if (response) {
+      await User.findByIdAndUpdate(req.params.userId, { resetLink: token });
+      return res.status(200).json({
+        success: true,
+        message: "Password reset link sent to email",
+      });
+    } else {
+      return res.status(500).json({
+        success: false,
+        message: "Failed to send password reset link",
+      });
+    }
+  } else {
+    return res
+      .status(404)
+      .json({ success: false, message: "The account does not exist." });
+  }
+};
+
+export const resetPassword = async (req, res) => {
+  const { password, confirmPassword } = req.body;
+  const { token } = req.params;
+
+  if (!password || !confirmPassword) {
+    return res.status(400).json({
+      success: false,
+      message: "Missing password and/or confirmPassword",
+    });
+  }
+
+  if (password !== confirmPassword) {
+    return res
+      .status(400)
+      .json({ success: false, message: "Passwords do not match" });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await User.findById(decoded.userId);
+    if (!user) {
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found" });
+    }
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+    await User.findByIdAndUpdate(decoded.userId, {
+      password: hashedPassword,
+      resetLink: "",
+    });
+    res.status(200).json({
+      success: true,
+      message: "Password reset successful",
+    });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ success: false, message: "Failed to reset password", error });
   }
 };
